@@ -28,4 +28,4 @@ Using grpc protocol for push message to client.
 
 ### Server push
     # run test push message to cliet
-    $ go test ./test/integration/ -count=1 -v -run TestPushMessage
+    $ go test ./test/ -count=1 -v -run TestPushMessage
