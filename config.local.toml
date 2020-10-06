@@ -1,0 +1,5 @@
+[server]
+grpc_port = 55100
+http_port = 55102
+log_path = "./log/server.log"
+internal_api_addr = "localhost:8081"

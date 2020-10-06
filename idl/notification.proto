@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package notification;
+
+service NotificationService {
+    rpc PushMessage(PushMessageRequest) returns (PushMessageResponse);
+}
+
+message PushMessageRequest {
+    string userID = 1;
+    string event = 2;
+    string data = 3;
+}
+
+message PushMessageResponse {
+    int32 code = 1;
+    string message = 2;
+}
