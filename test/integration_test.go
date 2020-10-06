@@ -3,6 +3,7 @@ package integration
 import (
 	"context"
 	"fmt"
+	"os/exec"
 	"testing"
 
 	pb "github.com/anvh2/notification-server/grpc-gen"
@@ -31,4 +32,14 @@ func TestPushMessage(t *testing.T) {
 	})
 	assert.Nil(t, err)
 	fmt.Println(res)
+}
+
+func BenchmarkConnections(b *testing.B) {
+	b.ResetTimer()
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			cmd := exec.Command("curl", "http://localhost:55102?token=123")
+			cmd.Run()
+		}
+	})
 }

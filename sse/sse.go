@@ -72,12 +72,6 @@ func NewBroker(logger *zap.Logger, port int, authFunc AuthenticationFunc) *Broke
 
 // Run -
 func (b *Broker) Run() error {
-	defer func() {
-		if r := recover(); r != nil {
-			b.logger.Error("[Run] recover sse server", zap.Any("r", r))
-		}
-	}()
-
 	go func() {
 		for {
 			select {
@@ -156,7 +150,7 @@ func (b *Broker) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 	b.newClientChan <- client
 
-	go b.incrConn()
+	b.incrConn()
 
 	defer func() {
 		b.closeClientChan <- client.channelID
