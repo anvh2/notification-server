@@ -24,7 +24,7 @@ Using grpc protocol for push message to client.
 # Example
 ### Client register
     # for now: token is clientID registered 
-    $ http://localhost:55102?token=123
+    $ curl http://localhost:55102?token=123
 
 ### Server push
     # run test push message to cliet
